@@ -1,0 +1,69 @@
+<div class="nav-buttons">
+  <button type="button" id="backLogin" title="Regresar al Login" class="icon-btn">
+    <span style="font-size:1.7rem;">&#8592;</span>
+  </button>
+  <button type="button" id="goHome" title="Ir a la página principal" class="icon-btn">
+    <span style="font-size:1.7rem;">&#8962;</span>
+  </button>
+</div>
+
+<div class="main-container">
+  <div class="image-section">
+    <img src="assets/images/Teacher_Register.png" alt="Registro Educativo">
+    <h3 class="register-title">
+      ¡Regístrate como Profesor<br>y potencia tu vocación educativa!
+    </h3>
+  </div>
+
+  <div class="login-container">
+    <h2>Registro de Profesor</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="asignaturas">Asignaturas a dictar:</label>
+        <input
+          type="text"
+          id="asignaturas"
+          name="asignaturas"
+          [(ngModel)]="asignaturas"
+          placeholder="Ejemplo: Matemáticas, Física, Inglés"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="institucion">Institución acreditada:</label>
+        <input
+          type="text"
+          id="institucion"
+          name="institucion"
+          [(ngModel)]="institucion"
+          placeholder="Nombre de la institución"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmar">Confirmar contraseña:</label>
+        <input type="password" id="confirmar" name="confirmar" [(ngModel)]="confirmar" required>
+      </div>
+
+      <button type="submit">Registrarse</button>
+    </form>
+    <div class="status-message" *ngIf="statusMessage" [ngClass]="messageType">
+      {{ statusMessage }}
+    </div>
+  </div>
+</div>

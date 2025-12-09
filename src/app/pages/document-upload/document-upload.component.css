@@ -1,0 +1,11 @@
+@import '../settings/settings.component.css';
+
+/* Ajustes mínimos específicos para esta página si los necesitas */
+
+.settings-header h1 {
+  font-size: 2rem;
+}
+
+.settings-header p {
+  font-size: 0.95rem;
+}

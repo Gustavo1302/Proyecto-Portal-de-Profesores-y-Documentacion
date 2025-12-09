@@ -1,0 +1,157 @@
+<header class="main-header">
+    <div class="header-content">
+        <div>
+            <h1>Panel de Documentación Pública</h1>
+            <p>Profesores comparten sus documentos y proyectos con la comunidad educativa.</p>
+        </div>
+        <div class="header-buttons">
+            <!-- Mostrar si NO hay profesor -->
+            <div id="notAuthenticatedButtons" class="not-authenticated" *ngIf="!teacher">
+                <button class="main-btn" (click)="goToLogin()">Login</button>
+                <button class="main-btn" (click)="goToRegister()">Registro</button>
+            </div>
+
+            <!-- Mostrar perfil si SÍ hay profesor -->
+            <div id="userProfileContainer" *ngIf="teacher" style="position: relative;">
+                <div class="user-profile" (click)="toggleDropdown()">
+                    <div class="user-avatar">👤</div>
+                    <span class="user-name">{{ teacher.nombre }}</span>
+                    <span class="dropdown-arrow">▼</span>
+                    <div class="dropdown-menu" [class.active]="dropdownOpen">
+                        <a href="#" (click)="showProfile($event)">👤 Mi Perfil</a>
+                        <button (click)="uploadDoc($event)">📄 Subir Documento</button>
+                        <a href="#" (click)="goToSettings($event)">⚙️ Configuración</a>
+                        <button (click)="logout($event)">🚪 Cerrar Sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<nav class="tags-bar">
+    <button class="tag-btn" data-tag="temas">Temas Importantes</button>
+    <button class="tag-btn" data-tag="proyectos">Proyectos Importantes</button>
+    <button class="tag-btn" data-tag="investigar">Interesantes temas a investigar</button>
+    <button class="tag-btn" data-tag="universidades">Universidades destacadas</button>
+</nav>
+<section class="news-panel">
+    <!-- Documentos subidos por profesores -->
+    <article
+        class="news-item"
+        *ngFor="let doc of documents"
+        [attr.data-tag]="mapTypeToTag(doc.type)"
+    >
+        <div class="news-header">
+            <img
+                [src]="getIconForType(doc.type)"
+                alt="{{ doc.type }}"
+                title="{{ doc.type }}"
+                class="news-icon"
+            />
+            <h2>{{ doc.type }}: {{ doc.title }}</h2>
+        </div>
+        <p>Autor: {{ doc.authorName }}</p>
+        <a
+            class="doc-link"
+            [href]="filesBaseUrl + doc.fileUrl"
+            target="_blank"
+        >
+            {{ doc.type }} - Descargar
+        </a>
+        <p class="news-desc">
+            {{ doc.description.length > 150 ? (doc.description | slice:0:150) + '...' : doc.description }}
+            <span *ngIf="doc.description.length > 150">
+                <a
+                    class="doc-link"
+                    [href]="filesBaseUrl + doc.fileUrl"
+                    target="_blank"
+                >
+                    Leer más
+                </a>
+            </span>
+        </p>
+    </article>
+
+    <!-- Contenido estático de ejemplo -->
+    <article class="news-item" data-tag="temas">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Inclusión" title="Inclusión" class="news-icon">
+            <h2>Temas Importantes: Educación Inclusiva</h2>
+        </div>
+        <p>Autor: Prof. Mariana Ruiz</p>
+        <a href="#" class="doc-link">Descargar guía PDF</a>
+        <p class="news-desc">Recursos y estrategias para la inclusión de estudiantes con necesidades educativas especiales en el aula.</p>
+    </article>
+    <article class="news-item" data-tag="temas">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Tecnología" title="Tecnología" class="news-icon">
+            <h2>Temas Importantes: Uso de Tecnología en el Aula</h2>
+        </div>
+        <p>Autor: Prof. Carlos Pérez</p>
+        <a href="#" class="doc-link">Descargar presentación PPT</a>
+        <p class="news-desc">Cómo integrar herramientas digitales y plataformas educativas para potenciar el aprendizaje.</p>
+    </article>
+    <article class="news-item" data-tag="proyectos">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Robótica" title="Robótica" class="news-icon">
+            <h2>Proyectos Importantes: Robótica Educativa</h2>
+        </div>
+        <p>Autor: Prof. Andrea Torres</p>
+        <a href="#" class="doc-link">Descargar proyecto PDF</a>
+        <p class="news-desc">Proyecto de robótica para fomentar el pensamiento lógico y la creatividad en estudiantes de primaria.</p>
+    </article>
+    <article class="news-item" data-tag="proyectos">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/2909/2909763.png" alt="Huerto" title="Huerto" class="news-icon">
+            <h2>Proyectos Importantes: Huerto Escolar Sostenible</h2>
+        </div>
+        <p>Autor: Prof. Juan Ramírez</p>
+        <a href="#" class="doc-link">Descargar guía PDF</a>
+        <p class="news-desc">Guía para implementar huertos escolares y promover la educación ambiental.</p>
+    </article>
+    <article class="news-item" data-tag="investigar">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="IA" title="IA" class="news-icon">
+            <h2>Interesantes temas a investigar: Inteligencia Artificial en Educación</h2>
+        </div>
+        <p>Autor: Prof. Sofía Mendoza</p>
+        <a href="#" class="doc-link">Descargar artículo PDF</a>
+        <p class="news-desc">Exploración sobre el impacto de la IA en la personalización del aprendizaje y la evaluación educativa.</p>
+    </article>
+    <article class="news-item" data-tag="investigar">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png" alt="Proyectos" title="Proyectos" class="news-icon">
+            <h2>Interesantes temas a investigar: Aprendizaje Basado en Proyectos</h2>
+        </div>
+        <p>Autor: Prof. Luis Herrera</p>
+        <a href="#" class="doc-link">Descargar documento PDF</a>
+        <p class="news-desc">Ventajas y desafíos de implementar el aprendizaje basado en proyectos en diferentes niveles educativos.</p>
+    </article>
+    <article class="news-item" data-tag="universidades">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/197/197397.png" alt="México" title="México" class="news-icon">
+            <h2>Universidades destacadas: Universidad Nacional Autónoma de México (UNAM)</h2>
+        </div>
+        <p>Autor: Equipo UNAM</p>
+        <a href="#" class="doc-link">Ver recursos institucionales</a>
+        <p class="news-desc">La UNAM comparte materiales y proyectos educativos abiertos para docentes de toda Latinoamérica.</p>
+    </article>
+    <article class="news-item" data-tag="universidades">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/197/197575.png" alt="Colombia" title="Colombia" class="news-icon">
+            <h2>Universidades destacadas: Universidad EAN (Colombia)</h2>
+        </div>
+        <p>Autor: Equipo EAN</p>
+        <a href="#" class="doc-link">Ver recursos institucionales</a>
+        <p class="news-desc">La Universidad EAN comparte recursos de emprendimiento, innovación y sostenibilidad para docentes y estudiantes.</p>
+    </article>
+    <article class="news-item" data-tag="universidades">
+        <div class="news-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/197/197573.png" alt="Argentina" title="Argentina" class="news-icon">
+            <h2>Universidades destacadas: Universidad de Buenos Aires (UBA)</h2>
+        </div>
+        <p>Autor: Equipo UBA</p>
+        <a href="#" class="doc-link">Ver recursos institucionales</a>
+        <p class="news-desc">La UBA ofrece acceso a investigaciones y documentos relevantes para la comunidad educativa.</p>
+    </article>
+</section>

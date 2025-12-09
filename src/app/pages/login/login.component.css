@@ -1,0 +1,197 @@
+.nav-buttons {
+    position: fixed;
+    top: 28px;
+    left: 38px;
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.icon-btn {
+    background: #4f8cff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(31, 38, 135, 0.10);
+    transition: background 0.2s;
+}
+.icon-btn:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* Fondo de toda la vista y centrado del contenedor principal */
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #f3f6fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Contenedor principal (cuadro blanco centrado) */
+.main-container {
+    display: flex;
+    width: 800px;
+    height: 480px;
+    background: #fff;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+/* Lado de la imagen */
+.image-section {
+    flex: 1;
+    background: linear-gradient(135deg, #4f8cff 60%, #a1c4fd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    padding: 30px;
+}
+
+.image-section img {
+    width: 220px;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.image-section h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Lado del formulario */
+.login-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 40px 40px 40px;
+    background: #fff;
+}
+
+.login-container h2 {
+    color: #4f8cff;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 22px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #b0c4de;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f7faff;
+    transition: border 0.2s;
+}
+
+.form-group input:focus {
+    border: 1.5px solid #4f8cff;
+    outline: none;
+}
+
+/* Botón Iniciar sesión */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #4f8cff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+button[type="submit"]:hover {
+    background: #2563eb;
+}
+
+button[type="submit"][disabled] {
+    opacity: 0.8;
+    cursor: default;
+}
+
+.loading-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-top-color: #ffffff;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Botón de Registrarse */
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    color: #4f8cff;
+    border: 2px solid #4f8cff;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+.register-btn:hover {
+    background: #e3edff;
+    color: #2563eb;
+}
+
+/* Botón de Olvidé mi contraseña */
+.forgot-btn {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    color: #2563eb;
+    border: none;
+    font-size: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-top: 0;
+    transition: color 0.2s;
+}
+.forgot-btn:hover {
+    color: #4f8cff;
+}

@@ -1,0 +1,83 @@
+<div class="nav-buttons">
+    <button type="button" id="backMain" title="Volver al Panel" class="icon-btn" (click)="goBack()">
+        <span style="font-size:1.7rem;">&#8592;</span>
+    </button>
+    <button type="button" id="goHome" title="Ir a la página principal" class="icon-btn" (click)="goToMain()">
+        <span style="font-size:1.7rem;">&#8962;</span>
+    </button>
+</div>
+<div class="settings-container">
+    <div class="settings-header">
+        <h1>Configuración de Perfil</h1>
+        <p>Actualiza tu información personal</p>
+    </div>
+
+        <div class="settings-content">
+            <form id="settingsForm" (ngSubmit)="onSubmit()">
+            <!-- Sección Información Personal -->
+            <div class="settings-section">
+                <h2>Información Personal</h2>
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required [(ngModel)]="nombre" #nombreModel="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required [(ngModel)]="email" #emailModel="ngModel">
+                </div>
+            </div>
+
+            <!-- Sección Educativa -->
+            <div class="settings-section">
+                <h2>Información Educativa</h2>
+                
+                <div class="form-group">
+                    <label for="asignaturas">Asignaturas a Dictar:</label>
+                    <input type="text" id="asignaturas" name="asignaturas" placeholder="Ejemplo: Matemáticas, Física, Inglés" required [(ngModel)]="asignaturas" #asignaturasModel="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <label for="institucion">Institución Acreditada:</label>
+                    <input type="text" id="institucion" name="institucion" placeholder="Nombre de la institución" required [(ngModel)]="institucion" #institucionModel="ngModel">
+                </div>
+            </div>
+
+            <!-- Sección Seguridad -->
+            <div class="settings-section">
+                <h2>Cambiar Contraseña</h2>
+                <p class="section-info">Deja los campos en blanco si no deseas cambiar tu contraseña</p>
+                
+                <div class="form-group">
+                    <label for="currentPassword">Contraseña Actual:</label>
+                    <input type="password" id="currentPassword" name="currentPassword" placeholder="Ingresa tu contraseña actual" [(ngModel)]="currentPassword" #currentPasswordModel="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">Nueva Contraseña:</label>
+                    <input type="password" id="newPassword" name="newPassword" placeholder="Ingresa tu nueva contraseña" [(ngModel)]="newPassword" #newPasswordModel="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirma tu nueva contraseña" [(ngModel)]="confirmPassword" #confirmPasswordModel="ngModel">
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="form-actions">
+                <button type="submit" class="btn-save">💾 Guardar Cambios</button>
+                <button type="button" id="cancelBtn" class="btn-cancel" (click)="goBack()">❌ Cancelar</button>
+            </div>
+
+            <div class="form-actions" style="margin-top: 10px;">
+                <button type="button" class="btn-save" (click)="goToUpload()">📄 Ir a Subir Documento</button>
+            </div>
+
+            <div id="statusMessage" class="status-message" [ngClass]="messageType" *ngIf="statusMessage">
+                {{ statusMessage }}
+            </div>
+        </form>
+    </div>
+</div>
