@@ -9,7 +9,13 @@ El sistema permite:
 - 📄 Subida de documentos académicos (PDF u otros) asociados a docentes.
 - 🧭 Listado y navegación entre páginas principales del portal.
 
-**🧮 Lenguajes principales (aprox.):** 🟦 TypeScript/Angular 60% · 🟩 Node.js 25% · ⚪ HTML/CSS 15%
+### 🧮 Lenguajes principales (aprox.)
+
+| Lenguaje              | Uso estimado | Barra de progreso        |
+|-----------------------|-------------|--------------------------|
+| 🟦 TypeScript /Angular | 60%         | ██████████░░░░░░         |
+| 🟩 Node.js (Backend)  | 25%         | █████░░░░░░░░░░         |
+| ⚪ HTML / CSS         | 15%         | ███░░░░░░░░░░░░         |
 
 ---
 
