@@ -14,11 +14,11 @@ El sistema permite:
 ## Mapa visual rápido de la arquitectura
 
 ```mermaid
-graph LR
-	U[Usuario (Navegador)] --> F[Frontend Angular - http://localhost:4200]
-	F --> B[Backend Node.js/Express - http://localhost:3000]
-	B --> D[(MongoDB)]
-	B --> S[Carpeta uploads (PDF)]
+graph LR;
+  U[Usuario Navegador] --> F[Frontend Angular 4200];
+  F --> B[Backend Node Express 3000];
+  B --> D[(MongoDB)];
+  B --> S[Carpeta uploads PDF];
 ```
 
 ---
