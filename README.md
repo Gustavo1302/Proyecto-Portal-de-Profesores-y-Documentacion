@@ -15,13 +15,10 @@ El sistema permite:
 
 ```mermaid
 graph LR
-	U[Usuario
-	Navegador] --> F[Frontend Angular
-	http://localhost:4200]
-	F --> B[Backend Node.js/Express
-	http://localhost:3000]
+	U[Usuario (Navegador)] --> F[Frontend Angular - http://localhost:4200]
+	F --> B[Backend Node.js/Express - http://localhost:3000]
 	B --> D[(MongoDB)]
-	B --> S[/Carpeta uploads (PDF)/]
+	B --> S[Carpeta uploads (PDF)]
 ```
 
 ---
