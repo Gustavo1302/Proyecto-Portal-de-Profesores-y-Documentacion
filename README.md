@@ -1,4 +1,4 @@
-﻿# Portal de Consultas Académicas
+# Portal de Consultas Académicas
 
 Aplicación **Full Stack** para la gestión de docentes y consultas académicas. 
 Incluye un frontend en **Angular** y un backend en **Node.js/Express** con base de datos **MongoDB**.
@@ -8,6 +8,21 @@ El sistema permite:
 - Gestión de perfil y configuración (página de *Settings*).
 - Subida de documentos académicos (PDF u otros) asociados a docentes.
 - Listado y navegación entre páginas principales del portal.
+
+---
+
+## Mapa visual rápido de la arquitectura
+
+```mermaid
+graph LR
+	U[Usuario
+	Navegador] --> F[Frontend Angular
+	http://localhost:4200]
+	F --> B[Backend Node.js/Express
+	http://localhost:3000]
+	B --> D[(MongoDB)]
+	B --> S[/Carpeta uploads (PDF)/]
+```
 
 ---
 
@@ -100,6 +115,23 @@ my-angular-app
 
 ---
 
+### Diagrama del flujo del backend
+
+```mermaid
+flowchart LR
+	C[Cliente Angular] -->|HTTP POST /auth/login| A[teacherRoutes]
+	A --> B[teacherController]
+	B --> M1[(Modelo Teacher)]
+
+	C -->|HTTP POST /documents| D[documentRoutes]
+	D --> E[documentController]
+	E --> M2[(Modelo Document)]
+	E --> U[/Carpeta uploads/]
+	M1 & M2 --> DB[(MongoDB)]
+```
+
+---
+
 ## Configuración del frontend (Angular)
 
 1. Volver a la raíz del proyecto Angular (si no estás ya ahí):
@@ -135,6 +167,21 @@ my-angular-app
 - **Subida de documentos**: página `document-upload` que envía archivos al backend y los guarda en `uploads/`.
 - **Configuración de usuario**: página `settings` para gestionar preferencias del docente.
 - **Arquitectura modular**: separación clara entre modelos, servicios, páginas y componentes.
+
+---
+
+### Mapa de navegación de pantallas (frontend)
+
+```mermaid
+flowchart LR
+	L[Login] -->|No tengo cuenta| R[Register]
+	L -->|Login correcto| M[Main]
+	R -->|Registro exitoso| L
+	M --> S[Settings]
+	M --> D[Document Upload]
+	S --> M
+	D --> M
+```
 
 ---
 
