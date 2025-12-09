@@ -1,17 +1,19 @@
-# Portal de Consultas Académicas
+# 🎓 Portal de Consultas Académicas
 
 Aplicación **Full Stack** para la gestión de docentes y consultas académicas. 
 Incluye un frontend en **Angular** y un backend en **Node.js/Express** con base de datos **MongoDB**.
 
 El sistema permite:
-- Registro e inicio de sesión de docentes.
-- Gestión de perfil y configuración (página de *Settings*).
-- Subida de documentos académicos (PDF u otros) asociados a docentes.
-- Listado y navegación entre páginas principales del portal.
+- 🔐 Registro e inicio de sesión de docentes.
+- 🧑‍🏫 Gestión de perfil y configuración (página de *Settings*).
+- 📄 Subida de documentos académicos (PDF u otros) asociados a docentes.
+- 🧭 Listado y navegación entre páginas principales del portal.
+
+**🧮 Lenguajes principales (aprox.):** 🟦 TypeScript/Angular 60% · 🟩 Node.js 25% · ⚪ HTML/CSS 15%
 
 ---
 
-## Mapa visual rápido de la arquitectura
+## 🗺️ Mapa visual rápido de la arquitectura
 
 ```mermaid
 graph LR;
@@ -23,7 +25,7 @@ graph LR;
 
 ---
 
-## Estructura del proyecto
+## 🧱 Estructura del proyecto
 
 ```bash
 my-angular-app
@@ -72,15 +74,15 @@ my-angular-app
 
 ---
 
-## Requisitos previos
+## 🧩 Requisitos previos
 
-- Node.js (versión recomendada 18.x o superior)
-- npm
-- MongoDB en ejecución (local o en la nube, por ejemplo Atlas)
+- 🟢 Node.js (versión recomendada 18.x o superior)
+- 📦 npm
+- 🍃 MongoDB en ejecución (local o en la nube, por ejemplo Atlas)
 
 ---
 
-## Configuración del backend
+## 🛠️ Configuración del backend
 
 1. Entrar a la carpeta del backend:
 
@@ -112,7 +114,7 @@ my-angular-app
 
 ---
 
-### Diagrama del flujo del backend
+### 🔁 Diagrama del flujo del backend
 
 ```mermaid
 flowchart LR
@@ -129,7 +131,7 @@ flowchart LR
 
 ---
 
-## Configuración del frontend (Angular)
+## 💻 Configuración del frontend (Angular)
 
 1. Volver a la raíz del proyecto Angular (si no estás ya ahí):
 
@@ -157,17 +159,17 @@ flowchart LR
 
 ---
 
-## Funcionalidades principales
+## ⭐ Funcionalidades principales
 
-- **Autenticación de docentes**: páginas de *Login* y *Register* conectadas con la API.
-- **Gestión de docentes**: creación y consulta de docentes mediante `Teacher` en el backend.
-- **Subida de documentos**: página `document-upload` que envía archivos al backend y los guarda en `uploads/`.
-- **Configuración de usuario**: página `settings` para gestionar preferencias del docente.
-- **Arquitectura modular**: separación clara entre modelos, servicios, páginas y componentes.
+- 🔑 **Autenticación de docentes**: páginas de *Login* y *Register* conectadas con la API.
+- 👨‍🏫 **Gestión de docentes**: creación y consulta de docentes mediante `Teacher` en el backend.
+- 📎 **Subida de documentos**: página `document-upload` que envía archivos al backend y los guarda en `uploads/`.
+- ⚙️ **Configuración de usuario**: página `settings` para gestionar preferencias del docente.
+- 🧩 **Arquitectura modular**: separación clara entre modelos, servicios, páginas y componentes.
 
 ---
 
-### Mapa de navegación de pantallas (frontend)
+### 🧭 Mapa de navegación de pantallas (frontend)
 
 ```mermaid
 flowchart LR
@@ -182,7 +184,7 @@ flowchart LR
 
 ---
 
-## Scripts útiles
+## 🧪 Scripts útiles
 
 En la raíz de `my-angular-app`:
 
@@ -200,7 +202,7 @@ npm run dev        # Levanta el backend con nodemon (si está configurado)
 
 ---
 
-## Contribuciones
+## 🤝 Contribuciones
 
 Las contribuciones son bienvenidas. Para proponer cambios:
 
@@ -210,6 +212,6 @@ Las contribuciones son bienvenidas. Para proponer cambios:
 
 ---
 
-## Licencia
+## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT.
